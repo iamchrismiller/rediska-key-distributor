@@ -1,5 +1,6 @@
 {
   "name": "node-rediska-hashring",
+  "version" : "0.0.1",
   "main" : "lib/ConsistentHashRing",
   "devDependencies": {
     "grunt": "~0.4.2",
