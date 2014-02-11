@@ -40,27 +40,20 @@ module.exports = {
       Error,
       "Error: Connection" + JSON.stringify(this.defaultServer) + " already exists."
     );
-
     test.done();
   },
 
   testRemoveConnection : function (test) {
     var removed = this.keyDistributor.removeConnection(this.defaultServer);
     test.equal(this.keyDistributor, removed);
-
-
     test.throws(
       function () {
-
-        console.log("HEY");
-
         this.keyDistributor.getConnectionByKeyName('test');
 
       }.bind(this),
       Error,
       "Error: Connection" + this.defaultServer + " does not exist."
     );
-
     test.done();
   },
 
@@ -73,7 +66,6 @@ module.exports = {
       Error,
       "Error: Connection" + this.defaultServer + "does not exist."
     );
-
     test.done();
   },
 
@@ -100,27 +92,6 @@ module.exports = {
       test.equal(connections[connection], conn);
       j++;
     }
-
-
-    test.done();
-  },
-
-  testMultipleGetConnectionByKeyName : function (test) {
-    var connections = {};
-
-    var options = this.defaultServer;
-    options.port = 6380;
-    this.keyDistributor.addConnection(options, 1);
-
-    options.port = 6381;
-    this.keyDistributor.addConnection(options, 1);
-
-    options.port = 6382;
-    this.keyDistributor.addConnection(options, 1);
-
-//    console.log("\n\nSHOULD BE 127.0.0.1:6380");
-//    console.log("\n" + this.keyDistributor.getConnectionByKeyName("provider:12345:members") + "\n");
-
     test.done();
   }
 };
