@@ -11,7 +11,6 @@
     "grunt-cli": "~0.1.13",
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-watch": "~0.5.3",
-    "hashring": "~1.0.3",
     "redis-mock": "~0.2.0"
   }
 }
