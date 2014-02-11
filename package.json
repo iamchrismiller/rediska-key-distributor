@@ -12,7 +12,6 @@
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-watch": "~0.5.3",
     "hashring": "~1.0.3",
-    "node-redis": "~0.1.7",
     "redis-mock": "~0.2.0"
   }
 }
