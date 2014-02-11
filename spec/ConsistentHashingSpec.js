@@ -1,14 +1,14 @@
 /*global module, require */
 "use strict";
 
-var ConsistentHashRing = require('./../lib/ConsistentHashRing');
+var KeyDistributor = require('./../lib/KeyDistributor');
 
 module.exports = {
 
 
   setUp : function (callback) {
     this.defaultConnectionString = '127.0.0.1:6379';
-    this.keyDistributor = new ConsistentHashRing();
+    this.keyDistributor = new KeyDistributor();
     callback();
   },
 
@@ -90,6 +90,20 @@ module.exports = {
       j++;
     }
 
+
+    test.done();
+  },
+
+  testMultipleGetConnectionByKeyName : function (test) {
+    var connections = {};
+
+    this.keyDistributor.addConnection(this.defaultConnectionString);
+    this.keyDistributor.addConnection(this.defaultConnectionString.replace('79', '80'));
+    this.keyDistributor.addConnection(this.defaultConnectionString.replace('79', '81'));
+    this.keyDistributor.addConnection(this.defaultConnectionString.replace('79', '82'));
+
+    console.log("\n\nSHOULD BE 127.0.0.1:6380");
+    console.log("\n" + this.keyDistributor.getConnectionByKeyName("provider:12345:members") + "\n");
 
     test.done();
   }

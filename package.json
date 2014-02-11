@@ -1,7 +1,7 @@
 {
-  "name": "node-rediska-hashring",
-  "version" : "0.0.1",
-  "main" : "lib/ConsistentHashRing",
+  "name": "node-rediska-key-distributor",
+  "version": "0.0.1",
+  "main": "lib/KeyDistributor",
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-nodeunit": "~0.3.0"
@@ -10,6 +10,9 @@
     "grunt": "~0.4.2",
     "grunt-cli": "~0.1.13",
     "grunt-contrib-jshint": "~0.8.0",
-    "grunt-contrib-watch": "~0.5.3"
+    "grunt-contrib-watch": "~0.5.3",
+    "hashring": "~1.0.3",
+    "node-redis": "~0.1.7",
+    "redis-mock": "~0.2.0"
   }
 }

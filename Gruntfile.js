@@ -4,7 +4,8 @@ module.exports = function (grunt) {
     pkg    : grunt.file.readJSON('package.json'),
 
     nodeunit: {
-      all: ['spec/**/*Spec.js']
+      all: ['spec/**/*Spec.js'],
+      cluster : ['spec/RedisClusterSpec.js']
     },
 
     jshint: {
@@ -21,8 +22,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('test', ['jshint', 'nodeunit']);
-
   grunt.registerTask('default', ['test']);
-
+  grunt.registerTask('test', ['jshint', 'nodeunit']);
 };
