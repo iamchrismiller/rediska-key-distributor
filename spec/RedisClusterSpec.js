@@ -26,7 +26,9 @@ module.exports = {
     test.throws(
       function () {
         new RedisCluster({
-          servers     : [ { host : '127.0.0.1', port : 6379, db : 0 } ],
+          servers     : [
+            { host : '127.0.0.1', port : 6379, db : 0 }
+          ],
           distributor : KeyDistributor
         });
       },
@@ -40,7 +42,9 @@ module.exports = {
     test.throws(
       function () {
         new RedisCluster({
-          servers      : [ { host : '127.0.0.1', port : 6379, db : 0 } ],
+          servers      : [
+            { host : '127.0.0.1', port : 6379, db : 0 }
+          ],
           redisFactory : redis
         });
       },
@@ -52,9 +56,11 @@ module.exports = {
 
   testCommandSetup : function (test) {
     var redisCluster = new RedisCluster({
-      servers     : [{ host : '127.0.0.1', port : 6379, db : 0 }],
+      servers      : [
+        { host : '127.0.0.1', port : 6379, db : 0 }
+      ],
       redisFactory : redis,
-      distributor : KeyDistributor
+      distributor  : KeyDistributor
     });
 
     redisCluster.commands = {};
@@ -66,44 +72,44 @@ module.exports = {
 
   testGetNode : function (test) {
     var redisCluster = new RedisCluster({
-      servers     : [
+      servers      : [
         { host : '127.0.0.1', port : 6379, db : 0 },
         { host : '127.0.0.1', port : 6380, db : 0 },
         { host : '127.0.0.1', port : 6381, db : 0 }
       ],
       redisFactory : redis,
-      distributor : KeyDistributor
+      distributor  : KeyDistributor
     });
 
     test.equal(redisCluster._getNode('key:1'), '127.0.0.1:6381');
     test.equal(redisCluster._getNode('test:key:1'), '127.0.0.1:6379');
     test.equal(redisCluster._getNode('provider:key:12345'), '127.0.0.1:6380');
-    test.equal(redisCluster._getNode('this:is:a:test:key'), '127.0.0.1:6380');
     test.equal(redisCluster._getNode('what:about:a:key:like:this'), '127.0.0.1:6380');
-    test.equal(redisCluster._getNode('this.could.be.a.key.as.well'), '127.0.0.1:6381');
+    test.equal(redisCluster._getNode('this:is:a:test:key'), '127.0.0.1:6379');
     test.equal(redisCluster._getNode('foo'), '127.0.0.1:6381');
     test.equal(redisCluster._getNode('bar'), '127.0.0.1:6380');
+    test.equal(redisCluster._getNode('this.could.be.a.key.as.well'), '127.0.0.1:6379');
     test.done();
   },
 
-  testCommandExecution : function(test) {
+  testCommandExecution : function (test) {
 
     var redisCluster = new RedisCluster({
-      servers     : [
+      servers      : [
         { host : '127.0.0.1', port : 6379, db : 0 },
         { host : '127.0.0.1', port : 6380, db : 0 },
         { host : '127.0.0.1', port : 6381, db : 0 }
       ],
       redisFactory : redis,
-      distributor : KeyDistributor
+      distributor  : KeyDistributor
     });
 
     var kv = {
-      "string:1" : "This is a test",
+      "string:1"                : "This is a test",
       "this:is:also:a:string:1" : "123"
     };
 
-    for(var key in kv) {
+    for (var key in kv) {
       redisCluster.execute('set', key, kv[key]);
       test.expect(redisCluster.execute('get', key), kv[key]);
     }
@@ -115,9 +121,11 @@ module.exports = {
     test.throws(
       function () {
         var redisCluster = new RedisCluster({
-          servers      : [ { host : '127.0.0.1', port : 6379, db : 0 } ],
+          servers      : [
+            { host : '127.0.0.1', port : 6379, db : 0 }
+          ],
           redisFactory : redis,
-          distributor : KeyDistributor
+          distributor  : KeyDistributor
         });
         redisCluster.execute('foo', 'bar');
       },
