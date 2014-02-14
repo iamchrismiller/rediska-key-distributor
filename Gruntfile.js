@@ -4,8 +4,7 @@ module.exports = function (grunt) {
     pkg    : grunt.file.readJSON('package.json'),
 
     nodeunit: {
-      all: ['spec/**/*Spec.js'],
-      cluster : ['spec/RedisClusterSpec.js']
+      all: ['spec/**/*Spec.js']
     },
 
     jshint: {
