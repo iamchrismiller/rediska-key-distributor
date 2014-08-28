@@ -1,20 +1,19 @@
-## Rediska Key Distributor
+# Rediska Key Distributor
 
   Port of PHP Rediska Key Distributor to Javascript
 
-# Description
+## Description
 
+  Using Rediska's Default Hashing Algorithm has restricted our use to PHP only.
+  We need to be able to Connect to the right instance of Redis Via Node using the same algorithm.
 
-
-Using Rediska's Default Hashing Algorithm has restricted our use to PHP only.
-We need to be able to Connect to the right instance of Redis Via Node using the same algorithm.
-
-
-# Usage
+## Usage
 
 Used With Node Redis Cluster
 
 ```
+ npm install rediska-key-distributor
+
  this.keyDistributor = new KeyDistributor({
   servers : [
     host : '127.0.0.1',
@@ -23,15 +22,21 @@ Used With Node Redis Cluster
  });
 ```
 
+## Contributing
 
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using grunt.
 
-# Install Instructions
-`npm install`
+## Release History
 
-#Running Tests
+- 1.0.0 Initial public release
 
-`grunt test`
+## License
 
-#Using Library
+Licensed under the MIT license.
 
-`npm install node-rediska-hash`
+## Author
+
+Chris Miller
+
+CRC Adopted from http://www.webtoolkit.info/
+KSort Adopted from https://github.com/kvz/phpjs
