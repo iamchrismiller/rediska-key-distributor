@@ -1,6 +1,7 @@
 {
   "name": "node-rediska-key-distributor",
   "version": "0.0.1",
+  "license": "MIT",
   "main": "lib/KeyDistributor",
   "devDependencies": {
     "grunt": "~0.4.2",
